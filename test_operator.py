@@ -51,12 +51,8 @@ for user in users.get_list():
     else:
         operator_activity.append({'user':user.get('name'), 'last_chat':None})
 
-
-writer = pd.ExcelWriter('assignments.xlsx', engine='xlsxwriter')
-
 df_op = pd.DataFrame(operator_activity)
-
-df_op.to_excel(writer, index=False, sheet_name='last_chat')
+df_op.to_excel('last_chats.xlsx', index=False, sheet_name="last_chat")
 ###
 
 assign = list()
@@ -72,5 +68,5 @@ df['operator']=df['user']
 del df['queueShow']
 del df['userShow']
 del df['enabled']
-df.to_excel(writer, index=False, sheet_name='assignments')
+df.to_excel('assignments.xlsx', index=False, sheet_name="assignments")
 print('created the Excel file assignments.xlsx')
